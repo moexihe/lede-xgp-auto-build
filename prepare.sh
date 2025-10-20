@@ -18,6 +18,13 @@ fi
 cat feeds.conf.default > feeds.conf
 echo "" >> feeds.conf
 echo "src-git qmodem https://github.com/FUjr/QModem.git;main" >> feeds.conf
+echo "src-git istore https://github.com/linkease/istore.git" >> feeds.conf
+echo "src-git nas https://github.com/linkease/nas-packages.git;master" >> feeds.conf
+echo "src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main" >> feeds.conf
+echo "src-git bandix https://github.com/timsaya/luci-app-bandix.git" >> feeds.conf
+echo "src-git watchdog https://github.com/sirpdboy/luci-app-watchdog.git" >> feeds.conf
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> feeds.conf
+echo "src-git bandixipk https://github.com/timsaya/openwrt-bandix.git" >> feeds.conf
 #echo "src-git qmodem https://github.com/zzzz0317/QModem.git;stable202508" >> feeds.conf
 rm -rf files
 cp -r ../files .
