@@ -1,6 +1,6 @@
 # NLnet XiGuaPi V3 (西瓜皮V3) LEDE 自动构建
 
-[![Build and Release](https://github.com/zzzz0317/lede-xgp-auto-build/actions/workflows/build.yml/badge.svg)](https://github.com/zzzz0317/lede-xgp-auto-build/actions/workflows/build.yml)
+[![Build and Release](https://github.com/moexihe/lede-xgp-auto-build/actions/workflows/build.yml/badge.svg)](https://github.com/moexihe/lede-xgp-auto-build/actions/workflows/build.yml)
 
 ## 已知问题
 
