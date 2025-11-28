@@ -13,6 +13,8 @@ else
     echo "repo dir not exists"
     git clone "https://github.com/coolsnowwolf/lede.git" || { echo "git clone failed"; exit 1; }
     cd lede
+    sed -i 's/KERNEL_PATCHVER:=.*/KERNEL_PATCHVER:=5.15/' target/linux/rockchip/Makefile
+    grep KERNEL_PATCHVER target/linux/rockchip/Makefile
 fi
 
 cat feeds.conf.default > feeds.conf
