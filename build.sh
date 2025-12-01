@@ -18,21 +18,6 @@ echo "check device exist"
 grep -Fxq "CONFIG_TARGET_rockchip_armv8_DEVICE_nlnet_xiguapi-v3=y" .config || exit 1
 echo apply qmodem default setting
 #cat feeds/qmodem/luci/luci-app-qmodem/root/etc/config/qmodem > files/etc/config/qmodem
-echo "fix uswgi"
-# Change uwsgi
-mkdir package/uwsgi
-cd package/uwsgi
-git init
-git remote add origin https://github.com/immortalwrt/packages.git
-git config core.sparsecheckout true
-echo "net/uwsgi/*" >> .git/info/sparse-checkout
-git pull origin master
-rm -rf net/uwsgi/files-luci-support
-cd ../..
-cp -r feeds/packages/net/uwsgi/files-luci-support package/uwsgi/net/uwsgi/
-rm -rf feeds/packages/net/uwsgi/*
-mv package/uwsgi/net/uwsgi/* feeds/packages/net/uwsgi/
-rm -rf package/uwsgi
 
 cat feeds/qmodem/application/qmodem/files/etc/config/qmodem > files/etc/config/qmodem
 cat >> files/etc/config/qmodem << EOF
@@ -77,5 +62,22 @@ echo "ZZ_BUILD_REPO_HASH='$(cd .. && git rev-parse HEAD)'" >> files/etc/zz_build
 echo "ZZ_BUILD_LEDE_HASH='$(git rev-parse HEAD)'" >> files/etc/zz_build_id
 echo "make download"
 make download -j8 || { echo "download failed"; exit 1; }
+
+echo "fix uswgi"
+# Change uwsgi
+mkdir package/uwsgi
+cd package/uwsgi
+git init
+git remote add origin https://github.com/immortalwrt/packages.git
+git config core.sparsecheckout true
+echo "net/uwsgi/*" >> .git/info/sparse-checkout
+git pull origin master
+rm -rf net/uwsgi/files-luci-support
+cd ../..
+cp -r feeds/packages/net/uwsgi/files-luci-support package/uwsgi/net/uwsgi/
+rm -rf feeds/packages/net/uwsgi/*
+mv package/uwsgi/net/uwsgi/* feeds/packages/net/uwsgi/
+rm -rf package/uwsgi
+
 echo "make lede"
-make V=s -j$(nproc) || { echo "make failed"; exit 1; }
+make V=0 -j$(nproc) || { echo "make failed"; exit 1; }
