@@ -17,7 +17,7 @@ fi
 
 cat feeds.conf.default > feeds.conf
 echo "" >> feeds.conf
-cat <<EOF
+cat <<EOF >> feeds.conf
 src-git qmodem https://github.com/FUjr/QModem.git;main
 #istore
 src-git istore https://github.com/linkease/istore.git
