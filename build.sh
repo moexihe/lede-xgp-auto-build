@@ -62,4 +62,4 @@ echo "ZZ_BUILD_LEDE_HASH='$(git rev-parse HEAD)'" >> files/etc/zz_build_id
 echo "make download"
 make download -j8 || { echo "download failed"; exit 1; }
 echo "make lede"
-make V=0 -j$(nproc) || { echo "make failed"; exit 1; }
+make V=s -j$(nproc) || { echo "make failed"; exit 1; }
